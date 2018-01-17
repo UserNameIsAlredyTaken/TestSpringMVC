@@ -24,8 +24,13 @@ public class MainController {
         return (List<PlayerProfile>) playerProfilesRepository.findAll();
     }
 
+
+
+    /**Just test method*/
     @RequestMapping(method = RequestMethod.GET, value = "/getString")
     public String getString(){
+        System.out.println("adding person");
+        playerProfilesRepository.save(new PlayerProfile(0,"pahsa",1,2,3,4,5,null,null,null,null));
         return "String";
     }
 }
