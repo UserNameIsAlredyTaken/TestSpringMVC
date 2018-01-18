@@ -25,9 +25,6 @@ public class CommonWeapon{
     @Column(name = "is_general")
     private boolean isGeneral;
 
-    @Column(name = "lvl_for_unlock")
-    private int lvlForUnlock;
-
     @OneToOne
     private Weapon weapon;
 
@@ -36,6 +33,6 @@ public class CommonWeapon{
     public String toString(){
         return String.format(
                 "CommonW[weaponId=%d, lvlForUnlock='%d']",
-                getId(), getLvlForUnlock());
+                getId());
     }
 }

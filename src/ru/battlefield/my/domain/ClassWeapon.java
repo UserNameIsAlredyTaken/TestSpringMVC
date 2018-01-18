@@ -25,9 +25,6 @@ public class ClassWeapon{
     @Column(name = "class")
     private String clazz;
 
-    @Column(name = "points_for_unlock")
-    private Integer pointsForUnlock;
-
     @OneToOne
     private Weapon weapon;
 
@@ -35,6 +32,6 @@ public class ClassWeapon{
     public String toString(){
         return String.format(
                 "ClassW[weaponId=%d, lvlForUnlock='%d']",
-                getId(), getPointsForUnlock());
+                getId());
     }
 }

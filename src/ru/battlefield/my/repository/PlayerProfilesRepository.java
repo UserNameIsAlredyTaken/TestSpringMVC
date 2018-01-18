@@ -15,6 +15,7 @@ public interface PlayerProfilesRepository extends CrudRepository<PlayerProfile,L
      * @return первое PlayerProfile найденное по данному имени
      */
     PlayerProfile findByNickName(String nickName);
+
     /**
      * Запрос по уровню для Upgrade
      * @param lvl уровень для поиска

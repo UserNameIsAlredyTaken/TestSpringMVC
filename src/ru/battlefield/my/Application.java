@@ -2,12 +2,12 @@ package ru.battlefield.my;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.ComponentScan;
-import ru.battlefield.my.domain.Camo;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import ru.battlefield.my.repository.CamosRepository;
+import ru.battlefield.my.domain.PlayerProfile;
+import ru.battlefield.my.repository.PlayerProfilesRepository;
 
 //@Slf4j
 @SpringBootApplication
@@ -20,14 +20,15 @@ public class Application {
 
 
 //    @Bean
-//    public CommandLineRunner demo(CamosRepository repository){
+//    public CommandLineRunner demo(PlayerProfilesRepository repository){
 //        return (args)-> {
 //
 //            log.info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!:");
 //            log.info("--------------------------------------------");
-//            for (Camo cam : repository.findAllByNecessaryLvlIsLessThanEqual(15)){
-//                log.info(cam.toString());
-//            }
+////            for (PlayerProfile cam : repository.findAllByLvl(1)){
+////                log.info(cam.toString());
+////            }
+//            log.info(repository.findByNickName("pop").toString());
 //            /*for (Specialization se : repository.findByNecessaryLvlIsLessThanEqual(41)){
 //                log.info(se.toString());
 //            }*/

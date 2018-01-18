@@ -28,12 +28,6 @@ public class Gadget{
     @Column
     private String name;
 
-    @Column(name = "implements")
-    private String impl;
-
-    @Column(name = "slot_number")
-    private int slotNumber;
-
     @Column(name = "class")
     private String clazz;
 

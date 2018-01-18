@@ -12,10 +12,4 @@ public interface WeaponRepository extends CrudRepository<Weapon,Long>{
      * @return первое Weapon найденное по данному имени
      */
     Weapon findByName(String name);
-    /**
-     * Запрос по минимальному урону для Weapon
-     * @param minDamage урон для поиска
-     * @return все Weapon минимальный урон которых больше или равен переданному значению урона
-     */
-    List<Weapon> findAllByMinDamageIsGreaterThanEqual(Double minDamage);
 }

@@ -34,16 +34,11 @@ public class Weapon {
     @Column
     private int rpm;
 
-    @Column(name = "max_damage")
-    private Double maxDamage;
-    @Column(name = "min_damage")
-    private Double minDamage;
-
     @Column
     private String range;
 
     @Column
-    private int ammunition;
+    private String ammunition;
 
     @Column
     private double reload;

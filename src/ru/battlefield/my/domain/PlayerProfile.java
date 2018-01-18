@@ -28,6 +28,21 @@ public class PlayerProfile implements Serializable {
     @Column(name = "nick_name")
     private String nickName;
 
+    @Column(name = "hash_pass")
+    private String hashPass;
+
+    @Column(name = "wins")
+    private int wins;
+
+    @Column(name = "losses")
+    private int losses;
+
+    @Column(name = "kills")
+    private int kills;
+
+    @Column(name = "deaths")
+    private int deaths;
+
     @Column
     private int lvl;
 
@@ -42,10 +57,6 @@ public class PlayerProfile implements Serializable {
 
     @Column(name = "recon_points")
     private int reconPoints;
-
-    @ManyToMany
-    @JoinTable
-    private Set<Camo> camos;
 
     @ManyToMany
     @JoinTable
