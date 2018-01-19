@@ -34,9 +34,6 @@ public class Gadget{
     @Column(name = "necessary_point")
     private int necessaryPoint;
 
-    @ManyToMany(mappedBy = "gadgets", cascade = CascadeType.ALL)
-    private Set<PlayerProfile> playerProfiles;
-
     @Override
     public String toString(){
         return String.format(

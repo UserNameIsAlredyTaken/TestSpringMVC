@@ -96,7 +96,7 @@ public class MainController {
     @RequestMapping(method = RequestMethod.GET, value = "/getString")
     public String getString()throws Exception{
         System.out.println("adding person");
-        playerProfilesRepository.save(new PlayerProfile(0,"pasha", Password.getSaltedHash("pass"),1,2,3,4,5,6,7,8,9,8,8,8,null,null,null));
+        //playerProfilesRepository.save(new PlayerProfile(0,"pasha", Password.getSaltedHash("pass"),1,2,3,4,5,6,7,8,9,8,8));
         return "String";
     }
 }

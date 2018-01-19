@@ -67,13 +67,6 @@ public class PlayerProfile implements Serializable {
     @Column(name = "total_score")
     private int totalScore;
 
-    @ManyToMany
-    @JoinTable
-    private Set<Specialization> specializations;
-
-    @ManyToMany
-    @JoinTable
-    private Set<Gadget> gadgets;
 
     @OneToMany(mappedBy = "playerProfile", cascade = CascadeType.ALL)
     private Set<WeaponKills> weaponKills;

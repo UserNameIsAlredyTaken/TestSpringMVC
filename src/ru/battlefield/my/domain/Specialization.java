@@ -32,9 +32,6 @@ public class Specialization{
     @Column(name = "necessary_lvl")
     private int necessaryLvl;
 
-    @ManyToMany(mappedBy = "specializations", cascade = CascadeType.ALL)
-    private Set<PlayerProfile> playerProfiles;
-
     @Override
     public String toString(){
         return String.format(
