@@ -46,6 +46,12 @@ public class PlayerProfile implements Serializable {
     @Column
     private int lvl;
 
+    @Column(name = "score_for_this_lvl")
+    private int scoreForThisLvl;
+
+    @Column(name = "score_for_next_lvl")
+    private int scoreForNextLvl;
+
     @Column(name = "assault_points")
     private int assaultPoints;
 
@@ -57,6 +63,9 @@ public class PlayerProfile implements Serializable {
 
     @Column(name = "recon_points")
     private int reconPoints;
+
+    @Column(name = "total_score")
+    private int totalScore;
 
     @ManyToMany
     @JoinTable

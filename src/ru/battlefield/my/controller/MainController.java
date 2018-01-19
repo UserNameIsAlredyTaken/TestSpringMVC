@@ -66,9 +66,24 @@ public class MainController {
                 connection.disconnect();
             }
         }
-        JSONObject weatherJsonObject = (JSONObject) JSONValue.parseWithException(jsonResponse);
-        // получаем название города, для которого смотрим погоду
-        System.out.println(weatherJsonObject.get("plat"));
+        JSONObject JsonObject = (JSONObject) JSONValue.parseWithException(jsonResponse);
+        PlayerProfile playerProfile = new PlayerProfile();
+        playerProfile.setNickName(JsonObject.get("name").toString());
+        JsonObject = (JSONObject)JsonObject.get("stats");
+        playerProfile.setKills(Integer.parseInt(((JSONObject)JsonObject.get("global")).get("kills").toString()));
+        playerProfile.setDeaths(Integer.parseInt(((JSONObject)JsonObject.get("global")).get("deaths").toString()));
+        playerProfile.setWins(Integer.parseInt(((JSONObject)JsonObject.get("global")).get("wins").toString()));
+        playerProfile.setLosses(Integer.parseInt(((JSONObject)JsonObject.get("global")).get("losses").toString()));
+        playerProfile.setLvl(Integer.parseInt(((JSONObject)JsonObject.get("rank")).get("nr").toString()));
+        playerProfile.setAssaultPoints(Integer.parseInt(((JSONObject)JsonObject.get("scores")).get("assault").toString()));
+        playerProfile.setEngineerPoints(Integer.parseInt(((JSONObject)JsonObject.get("scores")).get("engineer").toString()));
+        playerProfile.setReconPoints(Integer.parseInt(((JSONObject)JsonObject.get("scores")).get("recon").toString()));
+        playerProfile.setSupportPoints(Integer.parseInt(((JSONObject)JsonObject.get("scores")).get("support").toString()));
+        playerProfile.setScoreForThisLvl(Integer.parseInt(((JSONObject)JsonObject.get("rank")).get("score").toString()));
+        playerProfile.setScoreForThisLvl(Integer.parseInt(((JSONObject)((JSONArray)JsonObject.get("nextRanks")).get(0)).get("score").toString()));
+        playerProfile.setScoreForThisLvl(Integer.parseInt(((JSONObject)JsonObject.get("scores")).get("score").toString()));
+
+        System.out.println(playerProfile.getNickName());
 //        JSONObject weather = (JSONObject) weatherJsonObject.get("stats");
 //        JSONArray weatherArray = (JSONArray) weatherJsonObject.get("weapons");
 //        // достаем из массива первый элемент
@@ -81,7 +96,7 @@ public class MainController {
     @RequestMapping(method = RequestMethod.GET, value = "/getString")
     public String getString()throws Exception{
         System.out.println("adding person");
-        playerProfilesRepository.save(new PlayerProfile(0,"pasha", Password.getSaltedHash("pass"),1,2,3,4,5,6,7,8,9,null,null,null));
+        playerProfilesRepository.save(new PlayerProfile(0,"pasha", Password.getSaltedHash("pass"),1,2,3,4,5,6,7,8,9,8,8,8,null,null,null));
         return "String";
     }
 }
