@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@EqualsAndHashCode
+//@EqualsAndHashCode
 @Table(name = "weapon_kills")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,9 +26,9 @@ public class WeaponKills{
     @Column(name = "count_of_kills")
     private int countOfKills;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private PlayerProfile playerProfile;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private Weapon weapon;
 }

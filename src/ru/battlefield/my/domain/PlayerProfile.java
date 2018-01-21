@@ -14,7 +14,7 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-@EqualsAndHashCode
+//@EqualsAndHashCode
 @Table(name = "player_profiles")
 @NoArgsConstructor
 @AllArgsConstructor

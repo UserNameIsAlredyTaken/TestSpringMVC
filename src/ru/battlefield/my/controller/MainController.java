@@ -1,19 +1,26 @@
 package ru.battlefield.my.controller;
 
 import org.apache.commons.io.IOUtils;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.JSONParser;
+
+
+import org.json.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ru.battlefield.my.domain.PlayerProfile;
+import ru.battlefield.my.domain.Weapon;
+import ru.battlefield.my.domain.WeaponKills;
 import ru.battlefield.my.repository.PlayerProfilesRepository;
+import ru.battlefield.my.repository.WeaponKillsRepository;
+import ru.battlefield.my.repository.WeaponRepository;
 
+import javax.swing.text.html.HTMLDocument;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 
 /**
@@ -24,6 +31,12 @@ public class MainController {
 
     @Autowired
     private PlayerProfilesRepository playerProfilesRepository;
+
+    @Autowired
+    private WeaponKillsRepository weaponKillsRepository;
+
+    @Autowired
+    private WeaponRepository weaponRepository;
 
     @RequestMapping(method = RequestMethod.GET, value = "/getAllUsers")
     public List<PlayerProfile> getAllUsers(){
@@ -66,37 +79,65 @@ public class MainController {
                 connection.disconnect();
             }
         }
-        JSONObject JsonObject = (JSONObject) JSONValue.parseWithException(jsonResponse);
-        PlayerProfile playerProfile = new PlayerProfile();
-        playerProfile.setNickName(JsonObject.get("name").toString());
-        JsonObject = (JSONObject)JsonObject.get("stats");
-        playerProfile.setKills(Integer.parseInt(((JSONObject)JsonObject.get("global")).get("kills").toString()));
-        playerProfile.setDeaths(Integer.parseInt(((JSONObject)JsonObject.get("global")).get("deaths").toString()));
-        playerProfile.setWins(Integer.parseInt(((JSONObject)JsonObject.get("global")).get("wins").toString()));
-        playerProfile.setLosses(Integer.parseInt(((JSONObject)JsonObject.get("global")).get("losses").toString()));
-        playerProfile.setLvl(Integer.parseInt(((JSONObject)JsonObject.get("rank")).get("nr").toString()));
-        playerProfile.setAssaultPoints(Integer.parseInt(((JSONObject)JsonObject.get("scores")).get("assault").toString()));
-        playerProfile.setEngineerPoints(Integer.parseInt(((JSONObject)JsonObject.get("scores")).get("engineer").toString()));
-        playerProfile.setReconPoints(Integer.parseInt(((JSONObject)JsonObject.get("scores")).get("recon").toString()));
-        playerProfile.setSupportPoints(Integer.parseInt(((JSONObject)JsonObject.get("scores")).get("support").toString()));
-        playerProfile.setScoreForThisLvl(Integer.parseInt(((JSONObject)JsonObject.get("rank")).get("score").toString()));
-        playerProfile.setScoreForThisLvl(Integer.parseInt(((JSONObject)((JSONArray)JsonObject.get("nextRanks")).get(0)).get("score").toString()));
-        playerProfile.setScoreForThisLvl(Integer.parseInt(((JSONObject)JsonObject.get("scores")).get("score").toString()));
 
-        System.out.println(playerProfile.getNickName());
-//        JSONObject weather = (JSONObject) weatherJsonObject.get("stats");
-//        JSONArray weatherArray = (JSONArray) weatherJsonObject.get("weapons");
-//        // достаем из массива первый элемент
-//        JSONObject weatherData = (JSONObject) weatherArray.get(0);
+        PlayerProfile playerProfile = playerProfilesRepository.findByNickName(person.getLoggin());
+        JSONObject jsonObject = new JSONObject(jsonResponse);
+        playerProfile.setNickName(jsonObject.getString("name"));
+        jsonObject = jsonObject.getJSONObject("stats");
+        playerProfile.setKills          (jsonObject.getJSONObject("global") .getInt("kills"));
+        playerProfile.setDeaths         (jsonObject.getJSONObject("global") .getInt("deaths"));
+        playerProfile.setWins           (jsonObject.getJSONObject("global") .getInt("wins"));
+        playerProfile.setLosses         (jsonObject.getJSONObject("global") .getInt("losses"));
+        playerProfile.setLvl            (jsonObject.getJSONObject("rank")   .getInt("nr"));
+        playerProfile.setAssaultPoints  (jsonObject.getJSONObject("scores") .getInt("assault"));
+        playerProfile.setEngineerPoints (jsonObject.getJSONObject("scores") .getInt("engineer"));
+        playerProfile.setReconPoints    (jsonObject.getJSONObject("scores") .getInt("recon"));
+        playerProfile.setSupportPoints  (jsonObject.getJSONObject("scores") .getInt("support"));
+        playerProfile.setTotalScore     (jsonObject.getJSONObject("scores") .getInt("score"));
+        playerProfile.setScoreForThisLvl(jsonObject.getJSONObject("rank")   .getInt("score"));
+        playerProfile.setScoreForNextLvl(jsonObject.getJSONArray("nextranks").getJSONObject(0).getInt("score"));
+
+
+
+        jsonObject = jsonObject.getJSONObject("weapons");
+        jsonObject = jsonObject.getJSONObject("smMP7");
+
+        Weapon weapon = weaponRepository.findByName(jsonObject.getString("name"));
+        WeaponKills weaponKills = weaponKillsRepository.findByWeaponAndPlayerProfile(weapon,playerProfile);
+
+        weaponKills.setCountOfKills(jsonObject.getInt("kills"));
+
+        weaponKillsRepository.save(weaponKills);
+
+        playerProfilesRepository.save(playerProfile);
+
         return PersonCheckResponse.AllIsCorrect;
     }
 
 
     /**Just test method*/
-    @RequestMapping(method = RequestMethod.GET, value = "/getString")
+    @RequestMapping(method = RequestMethod.GET, value = "/fullDB")
     public String getString()throws Exception{
-        System.out.println("adding person");
-        //playerProfilesRepository.save(new PlayerProfile(0,"pasha", Password.getSaltedHash("pass"),1,2,3,4,5,6,7,8,9,8,8));
-        return "String";
+
+        PlayerProfile newPlayer = new PlayerProfile();
+        newPlayer.setNickName("Rango38");
+        newPlayer.setHashPass(Password.getSaltedHash("pass"));
+        playerProfilesRepository.save(newPlayer);
+
+        Weapon newWeapon = new Weapon();
+        newWeapon.setName  ("MP7");
+        newWeapon.setRpm   (950);
+        newWeapon.setRange ("SHORT");
+        newWeapon.setAmmunition("20 [4.6x30mm]");
+        newWeapon.setCategory("Sub machine guns");
+        newWeapon.setType("general");
+        weaponRepository.save(newWeapon);
+
+        WeaponKills weaponKills = new WeaponKills();
+        weaponKills.setWeapon(newWeapon);
+        weaponKills.setPlayerProfile(newPlayer);
+        weaponKills.setCountOfKills(0);
+        weaponKillsRepository.save(weaponKills);
+        return "is full";
     }
 }

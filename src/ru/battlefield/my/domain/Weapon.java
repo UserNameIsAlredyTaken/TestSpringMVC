@@ -24,9 +24,6 @@ public class Weapon {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
-    @Column(name = "type_of_weapon")
-    private String typeOfWeapon;
-
     @NotNull
     @Column
     private String name;
@@ -41,20 +38,17 @@ public class Weapon {
     private String ammunition;
 
     @Column
-    private double reload;
+    private String category;
+
+    @Column
+    private String type;
 
     @OneToMany(mappedBy = "weapon", cascade = CascadeType.ALL)
     private Set<WeaponKills> weaponKills;
 
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable
     private Set<Upgrade> upgrades;
-
-    @OneToOne(mappedBy = "weapon", cascade = CascadeType.ALL)
-    private CommonWeapon commonWeapon;
-
-    @OneToOne(mappedBy = "weapon", cascade = CascadeType.ALL)
-    private ClassWeapon classWeapon;
 
     @Override
     public String toString(){
