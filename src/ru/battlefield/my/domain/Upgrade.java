@@ -31,12 +31,6 @@ public class Upgrade{
     private String name;
 
     @Column
-    private String giving;
-
-    @Column
-    private int multiplicity;
-
-    @Column
     private String type;
 
     @Column(name = "kills_for_unlock")

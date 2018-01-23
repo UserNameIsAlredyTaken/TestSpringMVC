@@ -6,21 +6,13 @@ import org.apache.commons.io.IOUtils;
 import org.json.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import ru.battlefield.my.domain.PlayerProfile;
-import ru.battlefield.my.domain.Weapon;
-import ru.battlefield.my.domain.WeaponKills;
-import ru.battlefield.my.repository.PlayerProfilesRepository;
-import ru.battlefield.my.repository.WeaponKillsRepository;
-import ru.battlefield.my.repository.WeaponRepository;
+import ru.battlefield.my.domain.*;
+import ru.battlefield.my.repository.*;
 
-import javax.swing.text.html.HTMLDocument;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 
 /**
@@ -38,6 +30,15 @@ public class MainController {
     @Autowired
     private WeaponRepository weaponRepository;
 
+    @Autowired
+    private UpgradesRepository upgradesRepository;
+
+    @Autowired
+    private SpecializationsRepository specializationsRepository;
+
+    @Autowired
+    private GadgetsRepository gadgetsRepository;
+
     @RequestMapping(method = RequestMethod.GET, value = "/getAllUsers")
     public List<PlayerProfile> getAllUsers(){
         System.out.println("getAllUsers");
@@ -54,35 +55,12 @@ public class MainController {
             return PersonCheckResponse.PasswordIsIncorrect;
         }
 
-        HttpURLConnection  connection = null;
-        String jsonResponse = null;
-        try{
-            connection = (HttpURLConnection) new URL("http://api.bf3stats.com/pc/player/").openConnection();
-            connection.setRequestMethod("POST");
-            connection.setUseCaches(false);
-            connection.setDoOutput(true);
-            String bodyParametrs = "opt=clear,nextranks,global,rank,ranking,scores,equipment,equipmentName,equipmentInfo,specializations,weapons,weaponsName,weaponsInfo,weaponsUnlocks\n&player="+person.getLoggin();
-            byte[] postData = bodyParametrs.getBytes(StandardCharsets.UTF_8);
-            connection.getOutputStream().write(postData);
-            connection.connect();
-            if(connection.getResponseCode() == HttpURLConnection.HTTP_OK){
-                jsonResponse = IOUtils.toString(connection.getInputStream(), StandardCharsets.UTF_8);
-
-                System.out.println(jsonResponse);
-            }else{
-                System.out.println("Request is failed");
-            }
-        }catch(Exception e){
-            e.printStackTrace();
-        }finally {
-            if(connection!=null){
-                connection.disconnect();
-            }
-        }
-
         PlayerProfile playerProfile = playerProfilesRepository.findByNickName(person.getLoggin());
+
+        String jsonResponse = LoadHelper.getJsonData(person.getLoggin());
         JSONObject jsonObject = new JSONObject(jsonResponse);
-        playerProfile.setNickName(jsonObject.getString("name"));
+
+        playerProfile.setNickName       (jsonObject.getString("name"));
         jsonObject = jsonObject.getJSONObject("stats");
         playerProfile.setKills          (jsonObject.getJSONObject("global") .getInt("kills"));
         playerProfile.setDeaths         (jsonObject.getJSONObject("global") .getInt("deaths"));
@@ -96,48 +74,46 @@ public class MainController {
         playerProfile.setTotalScore     (jsonObject.getJSONObject("scores") .getInt("score"));
         playerProfile.setScoreForThisLvl(jsonObject.getJSONObject("rank")   .getInt("score"));
         playerProfile.setScoreForNextLvl(jsonObject.getJSONArray("nextranks").getJSONObject(0).getInt("score"));
-
-
-
-        jsonObject = jsonObject.getJSONObject("weapons");
-        jsonObject = jsonObject.getJSONObject("smMP7");
-
-        Weapon weapon = weaponRepository.findByName(jsonObject.getString("name"));
-        WeaponKills weaponKills = weaponKillsRepository.findByWeaponAndPlayerProfile(weapon,playerProfile);
-
-        weaponKills.setCountOfKills(jsonObject.getInt("kills"));
-
-        weaponKillsRepository.save(weaponKills);
-
         playerProfilesRepository.save(playerProfile);
+
+        String weaponsString = jsonResponse.substring(jsonResponse.lastIndexOf("\"weapons\":{")+11,jsonResponse.lastIndexOf("\"mgQBB95\""));
+        String[] weapons = weaponsString.split("\"}]},");
+        for(int i = 0; i < weapons.length; i++){
+            String weaponName = weapons[i].substring(1,weapons[i].indexOf("\":{"));
+            Weapon weapon = weaponRepository.findByName(jsonObject.getJSONObject("weapons").getJSONObject(weaponName).getString("name"));
+            WeaponKills weaponKills = weaponKillsRepository.findByWeaponAndPlayerProfile(weapon,playerProfile);
+            weaponKills.setCountOfKills(jsonObject.getJSONObject("weapons").getJSONObject(weaponName).getInt("kills"));
+            weaponKillsRepository.save(weaponKills);
+        }
 
         return PersonCheckResponse.AllIsCorrect;
     }
 
 
-    /**Just test method*/
     @RequestMapping(method = RequestMethod.GET, value = "/fullDB")
     public String getString()throws Exception{
+
+        String jsonResponse = LoadHelper.getJsonData("Rango38");
+
+        LoadHelper.loadSpecializations(jsonResponse, specializationsRepository);
+
+        LoadHelper.loadGadgets(jsonResponse,gadgetsRepository);
+
+        LoadHelper.loadWeaponsAndUpgrades(jsonResponse, weaponRepository, upgradesRepository);
 
         PlayerProfile newPlayer = new PlayerProfile();
         newPlayer.setNickName("Rango38");
         newPlayer.setHashPass(Password.getSaltedHash("pass"));
         playerProfilesRepository.save(newPlayer);
 
-        Weapon newWeapon = new Weapon();
-        newWeapon.setName  ("MP7");
-        newWeapon.setRpm   (950);
-        newWeapon.setRange ("SHORT");
-        newWeapon.setAmmunition("20 [4.6x30mm]");
-        newWeapon.setCategory("Sub machine guns");
-        newWeapon.setType("general");
-        weaponRepository.save(newWeapon);
+        for (Weapon weapon:weaponRepository.findAll()) {
+            WeaponKills weaponKills = new WeaponKills();
+            weaponKills.setCountOfKills(0);
+            weaponKills.setPlayerProfile(newPlayer);
+            weaponKills.setWeapon(weapon);
+            weaponKillsRepository.save(weaponKills);
+        }
 
-        WeaponKills weaponKills = new WeaponKills();
-        weaponKills.setWeapon(newWeapon);
-        weaponKills.setPlayerProfile(newPlayer);
-        weaponKills.setCountOfKills(0);
-        weaponKillsRepository.save(weaponKills);
         return "is full";
     }
 }

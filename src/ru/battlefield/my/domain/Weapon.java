@@ -29,7 +29,7 @@ public class Weapon {
     private String name;
 
     @Column
-    private int rpm;
+    private String rpm;
 
     @Column
     private String range;
