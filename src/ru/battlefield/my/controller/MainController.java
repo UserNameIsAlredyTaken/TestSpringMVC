@@ -45,6 +45,37 @@ public class MainController {
         return (List<PlayerProfile>) playerProfilesRepository.findAll();
     }
 
+    @RequestMapping(method = RequestMethod.POST, value = "/registerPerson")
+    public PersonCheckResponse registerPerson(@RequestBody PersonCheckRequest person)throws Exception{
+        PlayerProfile newPlayer = playerProfilesRepository.findByNickName(person.getLoggin());
+        if(newPlayer!=null){
+            return PersonCheckResponse.LogginHasAlreadyBeenRegistered;
+        }
+        newPlayer = new PlayerProfile();
+
+        String jsonResponse = LoadHelper.getJsonData(person.getLoggin());
+        JSONObject jsonObject = new JSONObject(jsonResponse);
+
+        newPlayer.setNickName       (jsonObject.getString("name"));
+        newPlayer.setHashPass(Password.getSaltedHash(person.getPass()));
+        jsonObject = jsonObject.getJSONObject("stats");
+        newPlayer.setKills          (jsonObject.getJSONObject("global") .getInt("kills"));
+        newPlayer.setDeaths         (jsonObject.getJSONObject("global") .getInt("deaths"));
+        newPlayer.setWins           (jsonObject.getJSONObject("global") .getInt("wins"));
+        newPlayer.setLosses         (jsonObject.getJSONObject("global") .getInt("losses"));
+        newPlayer.setLvl            (jsonObject.getJSONObject("rank")   .getInt("nr"));
+        newPlayer.setAssaultPoints  (jsonObject.getJSONObject("scores") .getInt("assault"));
+        newPlayer.setEngineerPoints (jsonObject.getJSONObject("scores") .getInt("engineer"));
+        newPlayer.setReconPoints    (jsonObject.getJSONObject("scores") .getInt("recon"));
+        newPlayer.setSupportPoints  (jsonObject.getJSONObject("scores") .getInt("support"));
+        newPlayer.setTotalScore     (jsonObject.getJSONObject("scores") .getInt("score"));
+        newPlayer.setScoreForThisLvl(jsonObject.getJSONObject("rank")   .getInt("score"));
+        newPlayer.setScoreForNextLvl(jsonObject.getJSONArray("nextranks").getJSONObject(0).getInt("score"));
+        playerProfilesRepository.save(newPlayer);
+
+        return PersonCheckResponse.PersonWasSuccsessfullyRegistered;
+    }
+
     @RequestMapping(method = RequestMethod.POST, value = "/checkPerson")
     public PersonCheckResponse checkPerson(@RequestBody PersonCheckRequest person)throws Exception{
         PlayerProfile player = playerProfilesRepository.findByNickName(person.getLoggin());

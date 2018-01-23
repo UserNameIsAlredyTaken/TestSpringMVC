@@ -2,18 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b10601b-97b5-4eaa-a77e-a27ef0a9f2be" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/battlefield/my/controller/LoadHelper.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/ru/battlefield/my/controller/LoadHelper.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/e073cc19-6002-44bc-b2ba-b86d1ff1e4f4/_metadata_/metadata" afterPath="$PROJECT_DIR$/.idea/dataSources/e073cc19-6002-44bc-b2ba-b86d1ff1e4f4/_metadata_/metadata" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/e073cc19-6002-44bc-b2ba-b86d1ff1e4f4/_metadata_/metadata.values.at" afterPath="$PROJECT_DIR$/.idea/dataSources/e073cc19-6002-44bc-b2ba-b86d1ff1e4f4/_metadata_/metadata.values.at" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ru/battlefield/my/controller/MainController.class" afterPath="$PROJECT_DIR$/target/classes/ru/battlefield/my/controller/MainController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ru/battlefield/my/domain/Upgrade.class" afterPath="$PROJECT_DIR$/target/classes/ru/battlefield/my/domain/Upgrade.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ru/battlefield/my/domain/Weapon.class" afterPath="$PROJECT_DIR$/target/classes/ru/battlefield/my/domain/Weapon.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/battlefield/my/controller/MainController.java" afterPath="$PROJECT_DIR$/src/ru/battlefield/my/controller/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/battlefield/my/domain/Upgrade.java" afterPath="$PROJECT_DIR$/src/ru/battlefield/my/domain/Upgrade.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/battlefield/my/domain/Weapon.java" afterPath="$PROJECT_DIR$/src/ru/battlefield/my/domain/Weapon.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/battlefield/my/controller/PersonCheckResponse.java" afterPath="$PROJECT_DIR$/src/ru/battlefield/my/controller/PersonCheckResponse.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -100,15 +91,171 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/battlefield/my/controller/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="45" column="5" lean-forward="false" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+            <state relative-caret-position="168">
+              <caret line="55" column="65" lean-forward="false" selection-start-line="55" selection-start-column="65" selection-end-line="55" selection-end-column="65" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="docComment;class#MainController#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DATABASE/e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.SCHEMA:postgres.public" pinned="false" current-in-tab="false">
+        <entry file="uml://DATABASE/e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.SCHEMA:postgres.public">
+          <provider selected="true" editor-type-id="UmlEditorProvider">
+            <state>
+              <ID>DATABASE</ID>
+              <OriginalElement>e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.SCHEMA:postgres.public</OriginalElement>
+              <nodes>
+                <node x="279.0" y="682.0">e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.specializations</node>
+                <node x="0.0" y="682.0">e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.gadgets</node>
+                <node x="511.0" y="492.0">e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.weapon_kills</node>
+                <node x="263.0" y="108.0">e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.weapon</node>
+                <node x="0.0" y="148.5">e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.upgrades</node>
+                <node x="95.75" y="519.5">e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.weapon_upgrades</node>
+                <node x="583.0" y="0.0">e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.player_profiles</node>
+              </nodes>
+              <notes />
+              <edges>
+                <edge source="e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.weapon_upgrades" target="e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.weapon">
+                  <point x="67.0" y="-45.0" />
+                  <point x="296.75" y="467.0" />
+                  <point x="338.0" y="467.0" />
+                  <point x="-75.0" y="113.0" />
+                </edge>
+                <edge source="e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.weapon_kills" target="e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.weapon">
+                  <point x="-68.25" y="-72.5" />
+                  <point x="579.25" y="467.0" />
+                  <point x="488.0" y="467.0" />
+                  <point x="75.0" y="113.0" />
+                </edge>
+                <edge source="e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.weapon_upgrades" target="e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.upgrades">
+                  <point x="-67.0" y="-45.0" />
+                  <point x="162.75" y="467.0" />
+                  <point x="121.5" y="467.0" />
+                  <point x="0.0" y="72.5" />
+                </edge>
+                <edge source="e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.weapon_kills" target="e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.player_profiles">
+                  <point x="68.25" y="-72.5" />
+                  <point x="715.75" y="467.0" />
+                  <point x="807.0" y="467.0" />
+                  <point x="0.0" y="221.0" />
+                </edge>
+              </edges>
+              <settings layout="Hierarchic Group" zoom="0.9681227863046045" x="-52.09756097560975" y="257.9024390243902" />
+              <SelectedNodes>
+                <node>e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.specializations</node>
+              </SelectedNodes>
+              <Categories>
+                <Category>Key columns</Category>
+                <Category>Columns</Category>
+              </Categories>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Weapon.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/battlefield/my/domain/Weapon.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="231">
+              <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+              <folding>
+                <element signature="docComment;class#Weapon#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Gadget.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/battlefield/my/domain/Gadget.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="559">
+              <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Specialization.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/battlefield/my/domain/Specialization.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="20" column="28" lean-forward="false" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PersonCheckResponse.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/battlefield/my/controller/PersonCheckResponse.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="231">
+              <caret line="11" column="36" lean-forward="false" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="postgres.public.upgrades" pinned="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/fb6bfd04/e073cc19-6002-44bc-b2ba-b86d1ff1e4f4/postgres.public.upgrades">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="postgres.public.player_profiles" pinned="false" current-in-tab="true">
+        <entry file="dbDummy://dbtable:/fb6bfd04/e073cc19-6002-44bc-b2ba-b86d1ff1e4f4/postgres.public.player_profiles">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="postgres.public.weapon_kills" pinned="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/fb6bfd04/e073cc19-6002-44bc-b2ba-b86d1ff1e4f4/postgres.public.weapon_kills">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="postgres.public.specializations" pinned="false" current-in-tab="false">
+        <entry file="dbDummy://dbtable:/fb6bfd04/e073cc19-6002-44bc-b2ba-b86d1ff1e4f4/postgres.public.specializations">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -175,7 +322,6 @@
         <option value="$PROJECT_DIR$/src/controller/MainController.java" />
         <option value="dbtable:/fb6bfd04/e073cc19-6002-44bc-b2ba-b86d1ff1e4f4/postgres.public.player_profiles" />
         <option value="$PROJECT_DIR$/src/ru/battlefield/my/controller/PersonResponse.java" />
-        <option value="$PROJECT_DIR$/src/ru/battlefield/my/controller/PersonCheckResponse.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/e073cc19-6002-44bc-b2ba-b86d1ff1e4f4/console.sql" />
         <option value="$PROJECT_DIR$/src/ru/battlefield/my/controller/PersonCheckRequest.java" />
         <option value="dbtable:/fb6bfd04/e073cc19-6002-44bc-b2ba-b86d1ff1e4f4/postgres.public.gadgets" />
@@ -196,6 +342,7 @@
         <option value="$PROJECT_DIR$/src/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/ru/battlefield/my/domain/Upgrade.java" />
         <option value="$PROJECT_DIR$/src/ru/battlefield/my/controller/LoadHelper.java" />
+        <option value="$PROJECT_DIR$/src/ru/battlefield/my/controller/PersonCheckResponse.java" />
         <option value="$PROJECT_DIR$/src/ru/battlefield/my/controller/MainController.java" />
       </list>
     </option>
@@ -1118,12 +1265,12 @@
       <workItem from="1516358073492" duration="12342000" />
       <workItem from="1516520772789" duration="21606000" />
       <workItem from="1516599778796" duration="13889000" />
-      <workItem from="1516706868160" duration="11362000" />
+      <workItem from="1516706868160" duration="14193000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="141543000" />
+    <option name="totallyTimeSpent" value="144374000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -1137,7 +1284,7 @@
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15145005" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15145005" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1150,10 +1297,10 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.50056624" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14609286" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18689582" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18689582" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1205,13 +1352,6 @@
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml" />
     <entry file="file://$PROJECT_DIR$/src/ru/battlefield/my/PersistanceContext.java" />
     <entry file="file://$PROJECT_DIR$/src/ru/battlefield/my/repository/CamosRepository.java" />
-    <entry file="file://$PROJECT_DIR$/src/ru/battlefield/my/controller/PersonCheckResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="6" column="21" lean-forward="false" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/e073cc19-6002-44bc-b2ba-b86d1ff1e4f4/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
@@ -1400,24 +1540,6 @@
     <entry file="file://$PROJECT_DIR$/src/ru/battlefield/my/repository/ClassWeaponsRepository.java" />
     <entry file="file://$PROJECT_DIR$/src/ru/battlefield/my/domain/JSON-java-master/CDL.java" />
     <entry file="file://$PROJECT_DIR$/src/ru/battlefield/my/repository/CommonWeaponsRepository.java" />
-    <entry file="file://$PROJECT_DIR$/src/ru/battlefield/my/controller/PersonCheckRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="6" column="4" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="7" selection-end-column="24" />
-          <folding>
-            <element signature="docComment;class#PersonCheckRequest#0" expanded="false" />
-            <element signature="e#199#200#0" expanded="false" />
-            <element signature="e#228#229#0" expanded="false" />
-            <element signature="e#272#273#0" expanded="false" />
-            <element signature="e#308#309#0" expanded="false" />
-            <element signature="e#339#340#0" expanded="false" />
-            <element signature="e#366#367#0" expanded="false" />
-            <element signature="e#406#407#0" expanded="false" />
-            <element signature="e#438#439#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/battlefield/my/controller/Password.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="483">
@@ -1552,17 +1674,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/battlefield/my/domain/Weapon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="docComment;class#Weapon#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="dbDummy://dbtable:/fb6bfd04/e073cc19-6002-44bc-b2ba-b86d1ff1e4f4/postgres.public.player_profiles_specializations">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -1572,48 +1683,6 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/battlefield/my/domain/Specialization.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="559">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/battlefield/my/domain/Gadget.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="531">
-          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/fb6bfd04/e073cc19-6002-44bc-b2ba-b86d1ff1e4f4/postgres.public.gadgets">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/fb6bfd04/e073cc19-6002-44bc-b2ba-b86d1ff1e4f4/postgres.public.specializations">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1643,7 +1712,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/fb6bfd04/e073cc19-6002-44bc-b2ba-b86d1ff1e4f4/postgres.public.player_profiles">
+    <entry file="file://$PROJECT_DIR$/src/ru/battlefield/my/controller/LoadHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2316">
+          <caret line="121" column="49" lean-forward="false" selection-start-line="121" selection-start-column="49" selection-end-line="121" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#LoadHelper#0" expanded="false" />
+            <element signature="e#940#948#0" expanded="true" />
+            <element signature="e#4518#4527#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/battlefield/my/controller/PersonCheckRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="6" column="4" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="7" selection-end-column="24" />
+          <folding>
+            <element signature="docComment;class#PersonCheckRequest#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/fb6bfd04/e073cc19-6002-44bc-b2ba-b86d1ff1e4f4/postgres.public.gadgets">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
@@ -1656,7 +1748,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/fb6bfd04/e073cc19-6002-44bc-b2ba-b86d1ff1e4f4/postgres.public.weapon_kills">
+    <entry file="dbDummy://dbtable:/fb6bfd04/e073cc19-6002-44bc-b2ba-b86d1ff1e4f4/postgres.public.specializations">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
@@ -1688,18 +1780,45 @@
           <ID>DATABASE</ID>
           <OriginalElement>e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.SCHEMA:postgres.public</OriginalElement>
           <nodes>
-            <node x="" y="">e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.specializations</node>
-            <node x="" y="">e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.gadgets</node>
-            <node x="" y="">e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.weapon_kills</node>
-            <node x="" y="">e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.weapon</node>
-            <node x="" y="">e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.upgrades</node>
-            <node x="" y="">e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.weapon_upgrades</node>
-            <node x="" y="">e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.player_profiles</node>
+            <node x="279.0" y="682.0">e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.specializations</node>
+            <node x="0.0" y="682.0">e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.gadgets</node>
+            <node x="511.0" y="492.0">e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.weapon_kills</node>
+            <node x="263.0" y="108.0">e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.weapon</node>
+            <node x="0.0" y="148.5">e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.upgrades</node>
+            <node x="95.75" y="519.5">e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.weapon_upgrades</node>
+            <node x="583.0" y="0.0">e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.player_profiles</node>
           </nodes>
           <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="0.9681227863046045" x="661.1426829268293" y="413.5" />
-          <SelectedNodes />
+          <edges>
+            <edge source="e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.weapon_upgrades" target="e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.weapon">
+              <point x="67.0" y="-45.0" />
+              <point x="296.75" y="467.0" />
+              <point x="338.0" y="467.0" />
+              <point x="-75.0" y="113.0" />
+            </edge>
+            <edge source="e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.weapon_kills" target="e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.weapon">
+              <point x="-68.25" y="-72.5" />
+              <point x="579.25" y="467.0" />
+              <point x="488.0" y="467.0" />
+              <point x="75.0" y="113.0" />
+            </edge>
+            <edge source="e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.weapon_upgrades" target="e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.upgrades">
+              <point x="-67.0" y="-45.0" />
+              <point x="162.75" y="467.0" />
+              <point x="121.5" y="467.0" />
+              <point x="0.0" y="72.5" />
+            </edge>
+            <edge source="e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.weapon_kills" target="e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.player_profiles">
+              <point x="68.25" y="-72.5" />
+              <point x="715.75" y="467.0" />
+              <point x="807.0" y="467.0" />
+              <point x="0.0" y="221.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.9681227863046045" x="-52.09756097560975" y="257.9024390243902" />
+          <SelectedNodes>
+            <node>e073cc19-6002-44bc-b2ba-b86d1ff1e4f4.TABLE:postgres.public.specializations</node>
+          </SelectedNodes>
           <Categories>
             <Category>Key columns</Category>
             <Category>Columns</Category>
@@ -1707,27 +1826,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/battlefield/my/controller/LoadHelper.java">
+    <entry file="dbDummy://dbtable:/fb6bfd04/e073cc19-6002-44bc-b2ba-b86d1ff1e4f4/postgres.public.weapon_kills">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/battlefield/my/controller/PersonCheckResponse.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2316">
-          <caret line="121" column="49" lean-forward="false" selection-start-line="121" selection-start-column="49" selection-end-line="121" selection-end-column="49" />
+        <state relative-caret-position="231">
+          <caret line="11" column="36" lean-forward="false" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/battlefield/my/domain/Weapon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;class#LoadHelper#0" expanded="false" />
-            <element signature="e#940#948#0" expanded="true" />
-            <element signature="e#4518#4527#0" expanded="true" />
+            <element signature="docComment;class#Weapon#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/battlefield/my/domain/Gadget.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/battlefield/my/domain/Specialization.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="20" column="28" lean-forward="false" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/battlefield/my/controller/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="45" column="5" lean-forward="false" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+        <state relative-caret-position="168">
+          <caret line="55" column="65" lean-forward="false" selection-start-line="55" selection-start-column="65" selection-end-line="55" selection-end-column="65" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="docComment;class#MainController#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/fb6bfd04/e073cc19-6002-44bc-b2ba-b86d1ff1e4f4/postgres.public.player_profiles">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

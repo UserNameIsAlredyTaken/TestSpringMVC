@@ -6,5 +6,8 @@ package ru.battlefield.my.controller;
 public enum PersonCheckResponse {
     LogginIsIncorrect,
     PasswordIsIncorrect,
-    AllIsCorrect;
+    AllIsCorrect,
+
+    LogginHasAlreadyBeenRegistered,
+    PersonWasSuccsessfullyRegistered
 }

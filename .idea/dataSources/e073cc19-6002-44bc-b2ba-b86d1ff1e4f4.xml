@@ -9,8 +9,8 @@
     </database>
     <schema id="3" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2018-01-23.23:16:28.619</IntrospectionTimestamp>
-      <IntrospectionStateNumber>8367</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-01-24.00:06:02.534</IntrospectionTimestamp>
+      <IntrospectionStateNumber>8866</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -33,36 +33,36 @@
       <ObjectId>12002</ObjectId>
     </schema>
     <sequence id="9" parent="3" name="hibernate_sequence">
-      <ObjectId>38872</ObjectId>
-      <StateNumber>8356</StateNumber>
+      <ObjectId>39011</ObjectId>
+      <StateNumber>8855</StateNumber>
     </sequence>
     <table id="10" parent="3" name="gadgets">
-      <ObjectId>38874</ObjectId>
-      <StateNumber>8357</StateNumber>
+      <ObjectId>39013</ObjectId>
+      <StateNumber>8856</StateNumber>
     </table>
     <table id="11" parent="3" name="player_profiles">
-      <ObjectId>38882</ObjectId>
-      <StateNumber>8364</StateNumber>
+      <ObjectId>39021</ObjectId>
+      <StateNumber>8863</StateNumber>
     </table>
     <table id="12" parent="3" name="specializations">
-      <ObjectId>38890</ObjectId>
-      <StateNumber>8359</StateNumber>
+      <ObjectId>39029</ObjectId>
+      <StateNumber>8858</StateNumber>
     </table>
     <table id="13" parent="3" name="upgrades">
-      <ObjectId>38895</ObjectId>
-      <StateNumber>8366</StateNumber>
+      <ObjectId>39034</ObjectId>
+      <StateNumber>8865</StateNumber>
     </table>
     <table id="14" parent="3" name="weapon">
-      <ObjectId>38903</ObjectId>
-      <StateNumber>8367</StateNumber>
+      <ObjectId>39042</ObjectId>
+      <StateNumber>8866</StateNumber>
     </table>
     <table id="15" parent="3" name="weapon_kills">
-      <ObjectId>38911</ObjectId>
-      <StateNumber>8365</StateNumber>
+      <ObjectId>39050</ObjectId>
+      <StateNumber>8864</StateNumber>
     </table>
     <table id="16" parent="3" name="weapon_upgrades">
-      <ObjectId>38916</ObjectId>
-      <StateNumber>8367</StateNumber>
+      <ObjectId>39055</ObjectId>
+      <StateNumber>8866</StateNumber>
     </table>
     <object-type id="17" parent="4" name="bool">
       <ObjectId>16</ObjectId>
@@ -24732,30 +24732,30 @@
       <Position>1</Position>
       <DataType>bigint|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>8357</StateNumber>
+      <StateNumber>8856</StateNumber>
     </column>
     <column id="3868" parent="10" name="class">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>8357</StateNumber>
+      <StateNumber>8856</StateNumber>
     </column>
     <column id="3869" parent="10" name="name">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>8357</StateNumber>
+      <StateNumber>8856</StateNumber>
     </column>
     <column id="3870" parent="10" name="necessary_point">
       <Position>4</Position>
       <DataType>integer|0</DataType>
-      <StateNumber>8357</StateNumber>
+      <StateNumber>8856</StateNumber>
     </column>
     <index id="3871" parent="10" name="gadgets_pkey">
-      <ObjectId>38880</ObjectId>
+      <ObjectId>39019</ObjectId>
       <ColNames>gadget_id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="3872" parent="10" name="gadgets_pkey">
-      <ObjectId>38881</ObjectId>
+      <ObjectId>39020</ObjectId>
       <ColNames>gadget_id</ColNames>
       <UnderlyingIndexName>gadgets_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
@@ -24764,85 +24764,85 @@
       <Position>1</Position>
       <DataType>bigint|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>8358</StateNumber>
+      <StateNumber>8857</StateNumber>
     </column>
     <column id="3874" parent="11" name="assault_points">
       <Position>2</Position>
       <DataType>integer|0</DataType>
-      <StateNumber>8358</StateNumber>
+      <StateNumber>8857</StateNumber>
     </column>
     <column id="3875" parent="11" name="deaths">
       <Position>3</Position>
       <DataType>integer|0</DataType>
-      <StateNumber>8358</StateNumber>
+      <StateNumber>8857</StateNumber>
     </column>
     <column id="3876" parent="11" name="engineer_points">
       <Position>4</Position>
       <DataType>integer|0</DataType>
-      <StateNumber>8358</StateNumber>
+      <StateNumber>8857</StateNumber>
     </column>
     <column id="3877" parent="11" name="hash_pass">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>8358</StateNumber>
+      <StateNumber>8857</StateNumber>
     </column>
     <column id="3878" parent="11" name="kills">
       <Position>6</Position>
       <DataType>integer|0</DataType>
-      <StateNumber>8358</StateNumber>
+      <StateNumber>8857</StateNumber>
     </column>
     <column id="3879" parent="11" name="losses">
       <Position>7</Position>
       <DataType>integer|0</DataType>
-      <StateNumber>8358</StateNumber>
+      <StateNumber>8857</StateNumber>
     </column>
     <column id="3880" parent="11" name="lvl">
       <Position>8</Position>
       <DataType>integer|0</DataType>
-      <StateNumber>8358</StateNumber>
+      <StateNumber>8857</StateNumber>
     </column>
     <column id="3881" parent="11" name="nick_name">
       <Position>9</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>8358</StateNumber>
+      <StateNumber>8857</StateNumber>
     </column>
     <column id="3882" parent="11" name="recon_points">
       <Position>10</Position>
       <DataType>integer|0</DataType>
-      <StateNumber>8358</StateNumber>
+      <StateNumber>8857</StateNumber>
     </column>
     <column id="3883" parent="11" name="score_for_next_lvl">
       <Position>11</Position>
       <DataType>integer|0</DataType>
-      <StateNumber>8358</StateNumber>
+      <StateNumber>8857</StateNumber>
     </column>
     <column id="3884" parent="11" name="score_for_this_lvl">
       <Position>12</Position>
       <DataType>integer|0</DataType>
-      <StateNumber>8358</StateNumber>
+      <StateNumber>8857</StateNumber>
     </column>
     <column id="3885" parent="11" name="support_points">
       <Position>13</Position>
       <DataType>integer|0</DataType>
-      <StateNumber>8358</StateNumber>
+      <StateNumber>8857</StateNumber>
     </column>
     <column id="3886" parent="11" name="total_score">
       <Position>14</Position>
       <DataType>integer|0</DataType>
-      <StateNumber>8358</StateNumber>
+      <StateNumber>8857</StateNumber>
     </column>
     <column id="3887" parent="11" name="wins">
       <Position>15</Position>
       <DataType>integer|0</DataType>
-      <StateNumber>8358</StateNumber>
+      <StateNumber>8857</StateNumber>
     </column>
     <index id="3888" parent="11" name="player_profiles_pkey">
-      <ObjectId>38888</ObjectId>
+      <ObjectId>39027</ObjectId>
       <ColNames>player_id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="3889" parent="11" name="player_profiles_pkey">
-      <ObjectId>38889</ObjectId>
+      <ObjectId>39028</ObjectId>
       <ColNames>player_id</ColNames>
       <UnderlyingIndexName>player_profiles_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
@@ -24851,25 +24851,25 @@
       <Position>1</Position>
       <DataType>bigint|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>8359</StateNumber>
+      <StateNumber>8858</StateNumber>
     </column>
     <column id="3891" parent="12" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>8359</StateNumber>
+      <StateNumber>8858</StateNumber>
     </column>
     <column id="3892" parent="12" name="necessary_lvl">
       <Position>3</Position>
       <DataType>integer|0</DataType>
-      <StateNumber>8359</StateNumber>
+      <StateNumber>8858</StateNumber>
     </column>
     <index id="3893" parent="12" name="specializations_pkey">
-      <ObjectId>38893</ObjectId>
+      <ObjectId>39032</ObjectId>
       <ColNames>specialization_id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="3894" parent="12" name="specializations_pkey">
-      <ObjectId>38894</ObjectId>
+      <ObjectId>39033</ObjectId>
       <ColNames>specialization_id</ColNames>
       <UnderlyingIndexName>specializations_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
@@ -24878,30 +24878,30 @@
       <Position>1</Position>
       <DataType>bigint|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>8360</StateNumber>
+      <StateNumber>8859</StateNumber>
     </column>
     <column id="3896" parent="13" name="kills_for_unlock">
       <Position>2</Position>
       <DataType>integer|0</DataType>
-      <StateNumber>8360</StateNumber>
+      <StateNumber>8859</StateNumber>
     </column>
     <column id="3897" parent="13" name="name">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>8360</StateNumber>
+      <StateNumber>8859</StateNumber>
     </column>
     <column id="3898" parent="13" name="type">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>8360</StateNumber>
+      <StateNumber>8859</StateNumber>
     </column>
     <index id="3899" parent="13" name="upgrades_pkey">
-      <ObjectId>38901</ObjectId>
+      <ObjectId>39040</ObjectId>
       <ColNames>upgrade_id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="3900" parent="13" name="upgrades_pkey">
-      <ObjectId>38902</ObjectId>
+      <ObjectId>39041</ObjectId>
       <ColNames>upgrade_id</ColNames>
       <UnderlyingIndexName>upgrades_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
@@ -24910,45 +24910,45 @@
       <Position>1</Position>
       <DataType>bigint|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>8361</StateNumber>
+      <StateNumber>8860</StateNumber>
     </column>
     <column id="3902" parent="14" name="ammunition">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>8361</StateNumber>
+      <StateNumber>8860</StateNumber>
     </column>
     <column id="3903" parent="14" name="category">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>8361</StateNumber>
+      <StateNumber>8860</StateNumber>
     </column>
     <column id="3904" parent="14" name="name">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>8361</StateNumber>
+      <StateNumber>8860</StateNumber>
     </column>
     <column id="3905" parent="14" name="range">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>8361</StateNumber>
+      <StateNumber>8860</StateNumber>
     </column>
     <column id="3906" parent="14" name="rpm">
       <Position>6</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>8361</StateNumber>
+      <StateNumber>8860</StateNumber>
     </column>
     <column id="3907" parent="14" name="type">
       <Position>7</Position>
       <DataType>varchar(255)|0</DataType>
-      <StateNumber>8361</StateNumber>
+      <StateNumber>8860</StateNumber>
     </column>
     <index id="3908" parent="14" name="weapon_pkey">
-      <ObjectId>38909</ObjectId>
+      <ObjectId>39048</ObjectId>
       <ColNames>weapon_id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="3909" parent="14" name="weapon_pkey">
-      <ObjectId>38910</ObjectId>
+      <ObjectId>39049</ObjectId>
       <ColNames>weapon_id</ColNames>
       <UnderlyingIndexName>weapon_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
@@ -24957,43 +24957,43 @@
       <Position>1</Position>
       <DataType>bigint|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>8362</StateNumber>
+      <StateNumber>8861</StateNumber>
     </column>
     <column id="3911" parent="15" name="count_of_kills">
       <Position>2</Position>
       <DataType>integer|0</DataType>
-      <StateNumber>8362</StateNumber>
+      <StateNumber>8861</StateNumber>
     </column>
     <column id="3912" parent="15" name="player_profile_player_id">
       <Position>3</Position>
       <DataType>bigint|0</DataType>
-      <StateNumber>8362</StateNumber>
+      <StateNumber>8861</StateNumber>
     </column>
     <column id="3913" parent="15" name="weapon_weapon_id">
       <Position>4</Position>
       <DataType>bigint|0</DataType>
-      <StateNumber>8362</StateNumber>
+      <StateNumber>8861</StateNumber>
     </column>
     <index id="3914" parent="15" name="weapon_kills_pkey">
-      <ObjectId>38914</ObjectId>
+      <ObjectId>39053</ObjectId>
       <ColNames>weapon_kills_id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="3915" parent="15" name="weapon_kills_pkey">
-      <ObjectId>38915</ObjectId>
+      <ObjectId>39054</ObjectId>
       <ColNames>weapon_kills_id</ColNames>
       <UnderlyingIndexName>weapon_kills_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <foreign-key id="3916" parent="15" name="fkhjm9dhs4vd6e4vc4mijdjp2r1">
-      <ObjectId>38921</ObjectId>
+      <ObjectId>39060</ObjectId>
       <ColNames>player_profile_player_id</ColNames>
       <RefTableName>player_profiles</RefTableName>
       <RefKeyName>player_profiles_pkey</RefKeyName>
       <RefColNames>player_id</RefColNames>
     </foreign-key>
     <foreign-key id="3917" parent="15" name="fkgs47161dg82l2ftcmwwdv8gyg">
-      <ObjectId>38926</ObjectId>
+      <ObjectId>39065</ObjectId>
       <ColNames>weapon_weapon_id</ColNames>
       <RefTableName>weapon</RefTableName>
       <RefKeyName>weapon_pkey</RefKeyName>
@@ -25003,36 +25003,36 @@
       <Position>1</Position>
       <DataType>bigint|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>8363</StateNumber>
+      <StateNumber>8862</StateNumber>
     </column>
     <column id="3919" parent="16" name="upgrades_upgrade_id">
       <Position>2</Position>
       <DataType>bigint|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>8363</StateNumber>
+      <StateNumber>8862</StateNumber>
     </column>
     <index id="3920" parent="16" name="weapon_upgrades_pkey">
-      <ObjectId>38919</ObjectId>
+      <ObjectId>39058</ObjectId>
       <ColNames>weapons_weapon_id
 upgrades_upgrade_id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="3921" parent="16" name="weapon_upgrades_pkey">
-      <ObjectId>38920</ObjectId>
+      <ObjectId>39059</ObjectId>
       <ColNames>weapons_weapon_id
 upgrades_upgrade_id</ColNames>
       <UnderlyingIndexName>weapon_upgrades_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <foreign-key id="3922" parent="16" name="fkpn2yomkm6rctcij6r48v8s8t">
-      <ObjectId>38936</ObjectId>
+      <ObjectId>39075</ObjectId>
       <ColNames>weapons_weapon_id</ColNames>
       <RefTableName>weapon</RefTableName>
       <RefKeyName>weapon_pkey</RefKeyName>
       <RefColNames>weapon_id</RefColNames>
     </foreign-key>
     <foreign-key id="3923" parent="16" name="fk1dbm34pnjt6fgt267lf1olmd4">
-      <ObjectId>38931</ObjectId>
+      <ObjectId>39070</ObjectId>
       <ColNames>upgrades_upgrade_id</ColNames>
       <RefTableName>upgrades</RefTableName>
       <RefKeyName>upgrades_pkey</RefKeyName>
