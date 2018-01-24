@@ -10,4 +10,6 @@ import ru.battlefield.my.domain.WeaponKills;
  */
 public interface WeaponKillsRepository extends CrudRepository<WeaponKills,Long> {
     WeaponKills findByWeaponAndPlayerProfile(Weapon weapon, PlayerProfile playerProfile);
+
+    WeaponKills findTopByPlayerProfileOrderByCountOfKillsDesc(PlayerProfile playerProfile);
 }

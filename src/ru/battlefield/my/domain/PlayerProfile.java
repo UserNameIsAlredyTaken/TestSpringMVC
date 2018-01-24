@@ -1,5 +1,6 @@
 package ru.battlefield.my.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,8 +29,12 @@ public class PlayerProfile implements Serializable {
     @Column(name = "nick_name")
     private String nickName;
 
+    @JsonIgnore
     @Column(name = "hash_pass")
     private String hashPass;
+
+    @Column(name = "privacy")
+    private boolean privacy;
 
     @Column(name = "wins")
     private int wins;
@@ -67,7 +72,7 @@ public class PlayerProfile implements Serializable {
     @Column(name = "total_score")
     private int totalScore;
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "playerProfile", cascade = CascadeType.ALL)
     private Set<WeaponKills> weaponKills;
 

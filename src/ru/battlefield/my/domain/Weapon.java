@@ -1,5 +1,6 @@
 package ru.battlefield.my.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.internal.NotNull;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
@@ -43,9 +44,11 @@ public class Weapon {
     @Column
     private String type;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "weapon", cascade = CascadeType.ALL)
     private Set<WeaponKills> weaponKills;
 
+    @JsonIgnore
     @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable
     private Set<Upgrade> upgrades;

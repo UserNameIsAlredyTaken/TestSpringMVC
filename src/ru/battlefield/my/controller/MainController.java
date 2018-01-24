@@ -1,7 +1,5 @@
 package ru.battlefield.my.controller;
 
-import org.apache.commons.io.IOUtils;
-
 
 import org.json.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import ru.battlefield.my.domain.*;
 import ru.battlefield.my.repository.*;
 
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 
@@ -39,22 +34,77 @@ public class MainController {
     @Autowired
     private GadgetsRepository gadgetsRepository;
 
+    @RequestMapping(method = RequestMethod.GET, value = "/getAllWeapons")
+    public ArrayList<String> getAllWeapons(){
+        ArrayList<String> weaponsNames = new ArrayList<String>();
+        for (Weapon weapon:weaponRepository.findAll()) {
+            weaponsNames.add(weapon.getName());
+        }
+        return weaponsNames;
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/getWeaponInfo/{name}")
+    public Weapon getWeaponInfo(@PathVariable String name){
+        return weaponRepository.findByName(name);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/getTopWeapon/{login}")
+    public TopWeaponResponse getTopWeapon(@PathVariable String login){
+        TopWeaponResponse topWeapon = new TopWeaponResponse();
+
+        PlayerProfile playerProfile = playerProfilesRepository.findByNickName(login);
+        WeaponKills weaponKills = weaponKillsRepository.findTopByPlayerProfileOrderByCountOfKillsDesc(playerProfile);
+
+        topWeapon.setTopWeaponName(weaponKills.getWeapon().getName());
+        topWeapon.setTopWeaponKills(weaponKills.getCountOfKills());
+
+        return topWeapon;
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/getTop")
+    public ArrayList<String> getTop(){
+        ArrayList<String> topPlayersNames = new ArrayList<String>();
+        for (PlayerProfile playerProfile:playerProfilesRepository.findTop10ByOrderByKillsDesc()) {
+            topPlayersNames.add(playerProfile.getNickName());
+        }
+        return topPlayersNames;
+    }
+
     @RequestMapping(method = RequestMethod.GET, value = "/getAllUsers")
-    public List<PlayerProfile> getAllUsers(){
-        System.out.println("getAllUsers");
-        return (List<PlayerProfile>) playerProfilesRepository.findAll();
+    public ArrayList<PlayerProfile> getAllUsers(){
+        return (ArrayList<PlayerProfile>)playerProfilesRepository.findAll();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/getUser/{login}")
+    public PlayerProfile getUser(@PathVariable String login){
+        return playerProfilesRepository.findByNickName(login);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/getAllUsersNames")
+    public ArrayList<String> getAllUsersNames(){
+        ArrayList<String> nameList = new ArrayList<String>();
+        for (PlayerProfile user:playerProfilesRepository.findAll()) {
+            nameList.add(user.getNickName());
+        }
+        return nameList;
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/registerPerson")
     public PersonCheckResponse registerPerson(@RequestBody PersonCheckRequest person)throws Exception{
         PlayerProfile newPlayer = playerProfilesRepository.findByNickName(person.getLoggin());
         if(newPlayer!=null){
-            return PersonCheckResponse.LogginHasAlreadyBeenRegistered;
+            return PersonCheckResponse.LoginHasAlreadyBeenRegistered;
         }
         newPlayer = new PlayerProfile();
 
         String jsonResponse = LoadHelper.getJsonData(person.getLoggin());
         JSONObject jsonObject = new JSONObject(jsonResponse);
+
+        try{
+            if(jsonObject.getString("status").equals("notfound")){
+                return PersonCheckResponse.ThereIsNoSuchPlayer;
+            }
+        }catch (JSONException statusIsNotString){}
 
         newPlayer.setNickName       (jsonObject.getString("name"));
         newPlayer.setHashPass(Password.getSaltedHash(person.getPass()));
@@ -70,17 +120,36 @@ public class MainController {
         newPlayer.setSupportPoints  (jsonObject.getJSONObject("scores") .getInt("support"));
         newPlayer.setTotalScore     (jsonObject.getJSONObject("scores") .getInt("score"));
         newPlayer.setScoreForThisLvl(jsonObject.getJSONObject("rank")   .getInt("score"));
-        newPlayer.setScoreForNextLvl(jsonObject.getJSONArray("nextranks").getJSONObject(0).getInt("score"));
+        try{
+            newPlayer.setScoreForNextLvl(jsonObject.getJSONArray("nextranks").getJSONObject(0).getInt("score"));
+        }catch(JSONException noNextRank){
+            newPlayer.setScoreForNextLvl(0);
+        }
+        newPlayer.setPrivacy(false);
         playerProfilesRepository.save(newPlayer);
 
-        return PersonCheckResponse.PersonWasSuccsessfullyRegistered;
+        String weaponsString = jsonResponse.substring(jsonResponse.lastIndexOf("\"weapons\":{")+11,jsonResponse.lastIndexOf("\"mgQBB95\""));
+        String[] weapons = weaponsString.split("\"}]},");
+        for(int i = 0; i < weapons.length; i++){
+            String weaponName = weapons[i].substring(1,weapons[i].indexOf("\":{"));
+            Weapon weapon = weaponRepository.findByName(jsonObject.getJSONObject("weapons").getJSONObject(weaponName).getString("name"));
+
+            WeaponKills weaponKills = new WeaponKills();
+            weaponKills.setWeapon       (weapon);
+            weaponKills.setPlayerProfile(newPlayer);
+            weaponKills.setCountOfKills(jsonObject.getJSONObject("weapons").getJSONObject(weaponName).getInt("kills"));
+
+            weaponKillsRepository.save(weaponKills);
+        }
+
+        return PersonCheckResponse.PersonWasSuccessfullyRegistered;
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/checkPerson")
     public PersonCheckResponse checkPerson(@RequestBody PersonCheckRequest person)throws Exception{
         PlayerProfile player = playerProfilesRepository.findByNickName(person.getLoggin());
         if(player==null){
-            return PersonCheckResponse.LogginIsIncorrect;
+            return PersonCheckResponse.LoginIsIncorrect;
         }
         if(!Password.check(person.getPass(),player.getHashPass())){
             return PersonCheckResponse.PasswordIsIncorrect;
@@ -104,7 +173,11 @@ public class MainController {
         playerProfile.setSupportPoints  (jsonObject.getJSONObject("scores") .getInt("support"));
         playerProfile.setTotalScore     (jsonObject.getJSONObject("scores") .getInt("score"));
         playerProfile.setScoreForThisLvl(jsonObject.getJSONObject("rank")   .getInt("score"));
-        playerProfile.setScoreForNextLvl(jsonObject.getJSONArray("nextranks").getJSONObject(0).getInt("score"));
+        try{
+            playerProfile.setScoreForNextLvl(jsonObject.getJSONArray("nextranks").getJSONObject(0).getInt("score"));
+        }catch(JSONException noNextRank){
+            playerProfile.setScoreForNextLvl(0);
+        }
         playerProfilesRepository.save(playerProfile);
 
         String weaponsString = jsonResponse.substring(jsonResponse.lastIndexOf("\"weapons\":{")+11,jsonResponse.lastIndexOf("\"mgQBB95\""));
@@ -113,7 +186,7 @@ public class MainController {
             String weaponName = weapons[i].substring(1,weapons[i].indexOf("\":{"));
             Weapon weapon = weaponRepository.findByName(jsonObject.getJSONObject("weapons").getJSONObject(weaponName).getString("name"));
             WeaponKills weaponKills = weaponKillsRepository.findByWeaponAndPlayerProfile(weapon,playerProfile);
-            weaponKills.setCountOfKills(jsonObject.getJSONObject("weapons").getJSONObject(weaponName).getInt("kills"));
+            weaponKills.setCountOfKills (jsonObject.getJSONObject("weapons").getJSONObject(weaponName).getInt("kills"));
             weaponKillsRepository.save(weaponKills);
         }
 
@@ -134,6 +207,7 @@ public class MainController {
 
         PlayerProfile newPlayer = new PlayerProfile();
         newPlayer.setNickName("Rango38");
+        newPlayer.setPrivacy(false);
         newPlayer.setHashPass(Password.getSaltedHash("pass"));
         playerProfilesRepository.save(newPlayer);
 

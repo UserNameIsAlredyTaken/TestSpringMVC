@@ -12,4 +12,6 @@ public interface WeaponRepository extends CrudRepository<Weapon,Long>{
      * @return первое Weapon найденное по данному имени
      */
     Weapon findByName(String name);
+
+    Weapon findById(long id);
 }

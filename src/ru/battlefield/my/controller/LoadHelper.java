@@ -119,7 +119,6 @@ public class LoadHelper {
             connection.connect();
             if(connection.getResponseCode() == HttpURLConnection.HTTP_OK){
                 jsonResponse = IOUtils.toString(connection.getInputStream(), StandardCharsets.UTF_8);
-                System.out.println(jsonResponse);
             }else{
                 System.out.println("Request is failed");
             }
@@ -133,4 +132,9 @@ public class LoadHelper {
 
         return jsonResponse;
     }
+
+    static void changePrivacy(PlayerProfile playerProfile){
+        playerProfile.setPrivacy(!playerProfile.isPrivacy());
+    }
+
 }
