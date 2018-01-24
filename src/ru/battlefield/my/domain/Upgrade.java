@@ -1,5 +1,6 @@
 package ru.battlefield.my.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.internal.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -36,6 +37,7 @@ public class Upgrade{
     @Column(name = "kills_for_unlock")
     private int killsForUnlock;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "upgrades", cascade = CascadeType.ALL)
     private Set<Weapon> weapons;
 

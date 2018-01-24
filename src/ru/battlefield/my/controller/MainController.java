@@ -18,29 +18,36 @@ public class MainController {
 
     @Autowired
     private PlayerProfilesRepository playerProfilesRepository;
-
     @Autowired
     private WeaponKillsRepository weaponKillsRepository;
-
     @Autowired
     private WeaponRepository weaponRepository;
-
     @Autowired
     private UpgradesRepository upgradesRepository;
-
     @Autowired
     private SpecializationsRepository specializationsRepository;
-
     @Autowired
     private GadgetsRepository gadgetsRepository;
 
     @RequestMapping(method = RequestMethod.GET, value = "/getAllWeapons")
-    public ArrayList<String> getAllWeapons(){
-        ArrayList<String> weaponsNames = new ArrayList<String>();
-        for (Weapon weapon:weaponRepository.findAll()) {
-            weaponsNames.add(weapon.getName());
-        }
-        return weaponsNames;
+    public ArrayList<Weapon> getAllWeapons(){
+        return (ArrayList<Weapon>) weaponRepository.findAll();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/getUpgrades/{weaponsName}")
+    public Set<Upgrade> getUpgrades(@PathVariable String weaponsName){
+        Weapon weapon = weaponRepository.findByName(weaponsName);
+        return weapon.getUpgrades();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/getAllSpecializations")
+    public ArrayList<Specialization> getAllSpecializations(){
+        return (ArrayList<Specialization>) specializationsRepository.findAll();
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/getAllGadgets")
+    public ArrayList<Gadget> getAllGadgets(){
+        return (ArrayList<Gadget>) gadgetsRepository.findAll();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/getWeaponInfo/{name}")
