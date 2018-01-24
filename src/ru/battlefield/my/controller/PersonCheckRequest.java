@@ -4,22 +4,22 @@ package ru.battlefield.my.controller;
  * Created by danil on 18.01.2018.
  */
 public class PersonCheckRequest {
-    private String loggin;
-    private String pass;
+    private String login;
+    private String password;
 
-    public String getLoggin() {
-        return loggin;
+    public String getLogin() {
+        return login;
     }
 
-    public void setLoggin(String loggin) {
-        this.loggin = loggin;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
-    public String getPass() {
-        return pass;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPass(String pass) {
-        this.pass = pass;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

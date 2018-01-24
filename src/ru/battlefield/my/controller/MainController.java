@@ -114,13 +114,13 @@ public class MainController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/registerPerson")
     public PersonCheckResponse registerPerson(@RequestBody PersonCheckRequest person)throws Exception{
-        PlayerProfile newPlayer = playerProfilesRepository.findByNickName(person.getLoggin());
+        PlayerProfile newPlayer = playerProfilesRepository.findByNickName(person.getLogin());
         if(newPlayer!=null){
             return PersonCheckResponse.LoginHasAlreadyBeenRegistered;
         }
         newPlayer = new PlayerProfile();
 
-        String jsonResponse = LoadHelper.getJsonData(person.getLoggin());
+        String jsonResponse = LoadHelper.getJsonData(person.getLogin());
         JSONObject jsonObject = new JSONObject(jsonResponse);
 
         try{
@@ -130,7 +130,7 @@ public class MainController {
         }catch (JSONException statusIsNotString){}
 
         newPlayer.setNickName       (jsonObject.getString("name"));
-        newPlayer.setHashPass(Password.getSaltedHash(person.getPass()));
+        newPlayer.setHashPass(Password.getSaltedHash(person.getPassword()));
         jsonObject = jsonObject.getJSONObject("stats");
         newPlayer.setKills          (jsonObject.getJSONObject("global") .getInt("kills"));
         newPlayer.setDeaths         (jsonObject.getJSONObject("global") .getInt("deaths"));
@@ -170,17 +170,17 @@ public class MainController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/checkPerson")
     public PersonCheckResponse checkPerson(@RequestBody PersonCheckRequest person)throws Exception{
-        PlayerProfile player = playerProfilesRepository.findByNickName(person.getLoggin());
+        PlayerProfile player = playerProfilesRepository.findByNickName(person.getLogin());
         if(player==null){
             return PersonCheckResponse.LoginIsIncorrect;
         }
-        if(!Password.check(person.getPass(),player.getHashPass())){
+        if(!Password.check(person.getPassword(),player.getHashPass())){
             return PersonCheckResponse.PasswordIsIncorrect;
         }
 
-        PlayerProfile playerProfile = playerProfilesRepository.findByNickName(person.getLoggin());
+        PlayerProfile playerProfile = playerProfilesRepository.findByNickName(person.getLogin());
 
-        String jsonResponse = LoadHelper.getJsonData(person.getLoggin());
+        String jsonResponse = LoadHelper.getJsonData(person.getLogin());
         JSONObject jsonObject = new JSONObject(jsonResponse);
 
         playerProfile.setNickName       (jsonObject.getString("name"));
