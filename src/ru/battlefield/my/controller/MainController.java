@@ -29,9 +29,25 @@ public class MainController {
     @Autowired
     private GadgetsRepository gadgetsRepository;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/getAllWeapons")
-    public ArrayList<Weapon> getAllWeapons(){
-        return (ArrayList<Weapon>) weaponRepository.findAll();
+    @RequestMapping(method = RequestMethod.GET, value = "/getAllWeapons/{login}")
+    public ArrayList<AllWeaponsResponse> getAllWeapons(@PathVariable String login){
+        ArrayList<AllWeaponsResponse> responses = new ArrayList<AllWeaponsResponse>();
+        for (Weapon weapon : weaponRepository.findAll()) {
+            AllWeaponsResponse response = new AllWeaponsResponse();
+
+            PlayerProfile player = playerProfilesRepository.findByNickName(login);
+
+            response.setKills(weaponKillsRepository.findByWeaponAndPlayerProfile(weapon,player).getCountOfKills());
+            response.setAmmunition(weapon.getAmmunition());
+            response.setCategory(weapon.getCategory());
+            response.setName(weapon.getName());
+            response.setRange(weapon.getRange());
+            response.setRpm(weapon.getRpm());
+            response.setType(weapon.getType());
+
+            responses.add(response);
+        }
+        return responses;
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/getUpgrades/{weaponsName}")
