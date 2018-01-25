@@ -47,6 +47,12 @@ public class MainController {
 
             responses.add(response);
         }
+        responses.sort(new Comparator<AllWeaponsResponse>() {
+            @Override
+            public int compare(AllWeaponsResponse t1, AllWeaponsResponse t2) {
+                return t2.getKills()-t1.getKills();
+            }
+        });
         return responses;
     }
 
@@ -85,10 +91,13 @@ public class MainController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/getTop")
-    public ArrayList<String> getTop(){
-        ArrayList<String> topPlayersNames = new ArrayList<String>();
+    public ArrayList<TopResponse> getTop(){
+        ArrayList<TopResponse> topPlayersNames = new ArrayList<TopResponse>();
         for (PlayerProfile playerProfile:playerProfilesRepository.findTop10ByOrderByKillsDesc()) {
-            topPlayersNames.add(playerProfile.getNickName());
+            TopResponse topResponse = new TopResponse();
+            topResponse.setName(playerProfile.getNickName());
+            topResponse.setKills(playerProfile.getKills());
+            topPlayersNames.add(topResponse);
         }
         return topPlayersNames;
     }
@@ -216,7 +225,6 @@ public class MainController {
         return PersonCheckResponse.AllIsCorrect;
     }
 
-
     @RequestMapping(method = RequestMethod.GET, value = "/fullDB")
     public String getString()throws Exception{
 
@@ -243,5 +251,12 @@ public class MainController {
         }
 
         return "is full";
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/changePrivacy/{login}")
+    public void changePrivacy(@PathVariable String login)throws Exception{
+        PlayerProfile playerProfile = playerProfilesRepository.findByNickName(login);
+        playerProfile.setPrivacy(!playerProfile.isPrivacy());
+        playerProfilesRepository.save(playerProfile);
     }
 }

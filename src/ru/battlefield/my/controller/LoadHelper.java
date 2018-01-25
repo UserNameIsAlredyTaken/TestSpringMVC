@@ -132,9 +132,4 @@ public class LoadHelper {
 
         return jsonResponse;
     }
-
-    static void changePrivacy(PlayerProfile playerProfile){
-        playerProfile.setPrivacy(!playerProfile.isPrivacy());
-    }
-
 }

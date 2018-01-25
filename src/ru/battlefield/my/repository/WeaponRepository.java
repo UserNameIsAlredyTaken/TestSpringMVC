@@ -3,6 +3,7 @@ package ru.battlefield.my.repository;
 import org.springframework.data.repository.CrudRepository;
 import ru.battlefield.my.domain.Weapon;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface WeaponRepository extends CrudRepository<Weapon,Long>{
